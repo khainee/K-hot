@@ -1,9 +1,6 @@
 import time
 import datetime
-import secrets
 import requests
-
-random_hash = secrets.token_hex(32)
 
 current_time = datetime.datetime.now()
 timestamp = int(current_time.timestamp())
