@@ -46,4 +46,4 @@ def make_post_request():
 
 while True:
     make_post_request()
-    time.sleep(payload['game_state']['storage']) * 6 * 60)
+    time.sleep(payload['game_state']['storage'] * 6 * 60)
