@@ -31,12 +31,19 @@ headers = {
     'Accept-Encoding': 'gzip, deflate, br, zstd',
     'Accept-Language': 'en-US,en;q=0.9'
 }
+
+payload = {"game_state": {"refferals": 0, "inviter": "khainezay_1.tg", "village": "111646.village.hot.tg", "last_claim": 1710992560608961300, "firespace": 1, "boost": 11, "storage": 20, "balance": 51180}}
+
 def make_post_request():
     headers['Telegram-Data'] = f'user=%7B%22id%22%3A6459097440%2C%22first_name%22%3A%22K%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7410836090700338256&chat_type=sender&auth_date=1710832328&hash=3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'
-    payload = {"game_state": {"refferals": 0, "inviter": "khainezay_1.tg", "village": "111646.village.hot.tg", "last_claim": 1710992560608961300, "firespace": 1, "boost": 11, "storage": 20, "balance": 51180}}
     response = requests.post(url, headers=headers, json=payload)
-    print(response.text)
+    response_data = response.json()
+    payload['game_state']['last_claim'] = response_data['last_claim']
+    payload['game_state']['balance'] = response_data['hot_in_storage']
+    print(payload)
+    print("/n")
+    print(response_data)
 
 while True:
     make_post_request()
-    time.sleep(2 * 60 * 60)
+    time.sleep(str(payload['game_state']['storage'])[0] * 60 * 60)
