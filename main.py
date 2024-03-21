@@ -40,7 +40,8 @@ def make_post_request():
     response_data = response.json()
     payload['game_state']['last_claim'] = response_data['last_claim']
     payload['game_state']['balance'] = response_data['hot_in_storage']
-    print(payload + "/n")
+    print(payload)
+    print("/n")
     print(response_data)
 
 while True:
