@@ -6,7 +6,7 @@ current_time = datetime.datetime.now()
 timestamp = int(current_time.timestamp())
 
 
-url = 'https://api0.herewallet.app/api/v1/user/hot/claim/status'
+url = 'https://api0.herewallet.app/api/v1/user/hot/claim'
 headers = {
     'Host': 'api0.herewallet.app',
     'Connection': 'keep-alive',
