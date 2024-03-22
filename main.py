@@ -12,12 +12,7 @@ HEADERS = {
     'Platform': 'telegram',
     'sec-ch-ua-platform': '"Android"',
 }
-
-def claim_K():
-    headers = HEADERS.copy()
-    headers['Authorization'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUyMTQxMTAsImRpZCI6ODQ1OTYzOCwiZGV2aWNlIjpudWxsLCJhY2NvdW50X2lkIjoiaTY0NTkwOTc0NDAudGciLCJkZXZpY2VfaWQiOiIwNWJlMjFmOS02Zjg3LTQ1NTYtYWVjNS02MWNkYjNkMjA2YTAiLCJwbGF0Zm9ybSI6InRlbGVncmFtIiwidGltZXN0YW1wIjoxNzEwODMyMjI0LjAsInZpZXdfb25seSI6ZmFsc2V9.oFroXS98xIOMaNxPCjDQtRT-7pxQcPwjiFGWnOyjPtk'
-    headers['Telegram-Data'] = 'user=%7B%22id%22%3A6459097440%2C%22first_name%22%3A%22K%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7410836090700338256&chat_type=sender&auth_date=1710832328&hash=3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'
-    DATA = {
+DATA_K = {
     "game_state": {
         "refferals": 0,
         "inviter": "khainezay_1.tg",
@@ -28,15 +23,46 @@ def claim_K():
         "storage": 20,
         "balance": 51180
     }
+}
+DATA_M = {
+    "game_state": {
+        "refferals": 0,
+        "inviter": "khainezay_1.tg",
+        "village": "111646.village.hot.tg",
+        "last_claim": 1710992560608961300,
+        "firespace": 1,
+        "boost": 11,
+        "storage": 20,
+        "balance": 51180
     }
+}
+
+def claim_K():
+    headers = HEADERS.copy()
+    headers['Authorization'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjUyMTQxMTAsImRpZCI6ODQ1OTYzOCwiZGV2aWNlIjpudWxsLCJhY2NvdW50X2lkIjoiaTY0NTkwOTc0NDAudGciLCJkZXZpY2VfaWQiOiIwNWJlMjFmOS02Zjg3LTQ1NTYtYWVjNS02MWNkYjNkMjA2YTAiLCJwbGF0Zm9ybSI6InRlbGVncmFtIiwidGltZXN0YW1wIjoxNzEwODMyMjI0LjAsInZpZXdfb25seSI6ZmFsc2V9.oFroXS98xIOMaNxPCjDQtRT-7pxQcPwjiFGWnOyjPtk'
+    headers['Telegram-Data'] = 'user=%7B%22id%22%3A6459097440%2C%22first_name%22%3A%22K%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7410836090700338256&chat_type=sender&auth_date=1710832328&hash=3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'
     response = requests.post(API_URL, headers=headers, json=DATA)
     response_data = response.json()
     if response.status_code == 200:
-        PAYLOAD['game_state']['last_claim'] = response_data.get('last_claim', PAYLOAD['game_state']['last_claim'])
-        PAYLOAD['game_state']['balance'] = response_data.get('hot_in_storage', PAYLOAD['game_state']['balance'])
-        print(f"Claim Success.Current Balance is {int(PAYLOAD['game_state']['balance']) / 1000000}")
-        k_sleep = PAYLOAD['game_state']['storage'] * 6 * 60
+        DATA_K['game_state']['last_claim'] = response_data.get('last_claim')
+        DATA_K['game_state']['balance'] = response_data.get('hot_in_storage')
+        print(f"Claim Success.Current Balance of K is {int(PAYLOAD['game_state']['balance']) / 1000000}")
         time.sleep(7200)
+    else:
+        print(response_data['detail'])
+
+def claim_M():
+    headers = HEADERS.copy()
+    headers['Authorization'] = ''
+    headers['Telegram-Data'] = ''
+    #data
+    response = requests.post(API_URL, headers=headers, json=DATA)
+    response_data = response.json()
+    if response.status_code == 200:
+        DATA_M['game_state']['last_claim'] = response_data.get('last_claim')
+        DATA_M['game_state']['balance'] = response_data.get('hot_in_storage')
+        print(f"Claim Success.Current Balance of M is {int(PAYLOAD['game_state']['balance']) / 1000000}")
+        time.sleep(44444)
     else:
         print(response_data['detail'])
 
