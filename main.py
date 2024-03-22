@@ -1,6 +1,7 @@
 import time
 import datetime
 import requests
+import urllib.parse
 
 API_URL = 'https://api0.herewallet.app/api/v1/user/hot/claim'
 HEADERS = {
@@ -39,7 +40,7 @@ def make_post_request():
         'auth_date': '1710832328',  # Additional parameter
         'hash': '3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'  # Additional parameter
     }
-    telegram_data_str = '&'.join([f"{k}={v}" for k, v in telegram_data.items()])
+    telegram_data_str = urllib.parse.urlencode(telegram_data)
     print(telegram_data_str)
     headers['Telegram-Data'] = telegram_data_str
     response = requests.post(API_URL, headers=headers, json=PAYLOAD)
