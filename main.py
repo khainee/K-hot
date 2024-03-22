@@ -26,10 +26,10 @@ DATA_K = {
 }
 DATA_M = {
     "game_state": {
-        "refferals": 0,
+        "refferals": 1,
         "inviter": "khainezay_1.tg",
         "village": "111646.village.hot.tg",
-        "last_claim": 1710992560608961300,
+        "last_claim": 1711111010728183600,
         "firespace": 1,
         "boost": 11,
         "storage": 20,
@@ -53,8 +53,8 @@ def claim_K():
 
 def claim_M():
     headers = HEADERS.copy()
-    headers['Authorization'] = ''
-    headers['Telegram-Data'] = ''
+    headers['Authorization'] = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjU5MjYzMCwiZGlkIjoyNzU3Nzc2LCJkZXZpY2UiOm51bGwsImFjY291bnRfaWQiOiJteW9neWkyMzMxMC50ZyIsImRldmljZV9pZCI6IjMxOTM3YTM4LWNlZmItNDRlOS1iNTM5LTBkNDhlMTY5MjYzNiIsInBsYXRmb3JtIjoidGVsZWdyYW0iLCJ0aW1lc3RhbXAiOjE3MTExMTA5MTcuMCwidmlld19vbmx5IjpmYWxzZX0.DdbQET_Kbc5uBl2IwIi3Mq-ICiq_qGDibogc33lXx2E'
+    headers['Telegram-Data'] = 'user=%7B%22id%22%3A6320857317%2C%22first_name%22%3A%22Myo%22%2C%22last_name%22%3A%22Gyi%282%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A30%EF%B8%8F%E2%83%A3%29%22%2C%22username%22%3A%22myogyi23310%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=4509688859151364008&chat_type=sender&auth_date=1711110826&hash=8ac1220fa6d1aefc36a83eabdf142ab0e2b8f31abb90faa6602710e1d538ab67'
     #data
     response = requests.post(API_URL, headers=headers, json=DATA)
     response_data = response.json()
