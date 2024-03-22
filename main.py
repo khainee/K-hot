@@ -41,8 +41,8 @@ def make_post_request():
         response_data = response.json()
         payload['game_state']['last_claim'] = response_data['last_claim']
         payload['game_state']['balance'] = response_data['hot_in_storage']
-        print(f'Claim Success.Current Balance is {payload['game_state']['balance'] / 1000000}')
-
+        print(f"Claim Success. Current Balance is {int(payload['game_state']['balance']) / 1000000}")
+        
 while True:
     make_post_request()
     time.sleep(payload['game_state']['storage'] * 6 * 60)
