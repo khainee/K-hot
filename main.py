@@ -39,7 +39,6 @@ def make_post_request():
         'auth_date': '1710832328',  # Additional parameter
         'hash': '3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'  # Additional parameter
     }
-    
     telegram_data_str = '&'.join([f"{k}={v}" for k, v in telegram_data.items()])
     headers['Telegram-Data'] = telegram_data_str
     response = requests.post(API_URL, headers=headers, json=PAYLOAD)
