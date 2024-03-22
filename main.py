@@ -29,7 +29,7 @@ PAYLOAD = {
 
 def make_post_request():
     headers = HEADERS.copy()  # Copy headers to avoid modifying the original dictionary
-    headers['Telegram-Data'] = 'user=%7B%22id%22%3A6459097440%2C%22first_name%22%3A%22K%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D' #&chat_instance=-7410836090700338256&chat_type=sender&auth_date=1710832328&hash=3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'
+    headers['Telegram-Data'] = 'user=%7B%22id%22%3A6459097440%2C%22first_name%22%3A%22K%22%2C%22last_name%22%3A%22%22%2C%22language_code%22%3A%22en%22%2C%22allows_write_to_pm%22%3Atrue%7D&chat_instance=-7410836090700338256&chat_type=sender&auth_date=1710832328&hash=3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'
     response = requests.post(API_URL, headers=headers, json=PAYLOAD)
     if response.status_code == 200:
         response_data = response.json()
@@ -37,7 +37,7 @@ def make_post_request():
         PAYLOAD['game_state']['balance'] = response_data.get('hot_in_storage', PAYLOAD['game_state']['balance'])
         print(f"Claim Success. Current Balance is {int(PAYLOAD['game_state']['balance']) / 1000000}")
     else:
-        print("Trying again")
+        print(f"Trying again.{response.text}")
         make_post_request()
 
 while True:
