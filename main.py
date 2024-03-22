@@ -66,10 +66,13 @@ def claim_M():
     else:
         print(response_data['detail'])
 
-time_k = time.time()
-time_m = time.time()
+
 
 while True:
+    time_k = time.time()
+    claim_K()
+    time_m = time.time()
+    claim_M()
     current_time = time.time()
     if current_time - time_k >= 7200:
         claim_K()
