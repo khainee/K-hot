@@ -62,7 +62,7 @@ def claim_M():
         DATA_M['game_state']['last_claim'] = response_data.get('last_claim')
         DATA_M['game_state']['balance'] = response_data.get('hot_in_storage')
         print(f"Claim Success.Current Balance of M is {int(PAYLOAD['game_state']['balance']) / 1000000}")
-        time.sleep(44444)
+        time.sleep(21600)
     else:
         print(response_data['detail'])
 
@@ -70,4 +70,10 @@ time_k = time.time()
 time_m = time.time()
 
 while True:
-    claim_K()
+    current_time = time.time()
+    if current_time - time_k >= 7200:
+        claim_K()
+        time_k = time.time()
+    if current_time - time_m >= 21600:
+        claim_M()
+        time_m = time.time()
