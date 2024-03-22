@@ -40,6 +40,7 @@ def make_post_request():
         'hash': '3b83294a563569d35240aaa05893214a750cd24c9992efebe47da36f53c2b1ff'  # Additional parameter
     }
     telegram_data_str = '&'.join([f"{k}={v}" for k, v in telegram_data.items()])
+    print(telegram_data_str)
     headers['Telegram-Data'] = telegram_data_str
     response = requests.post(API_URL, headers=headers, json=PAYLOAD)
     if response.status_code == 200:
