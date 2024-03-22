@@ -46,7 +46,7 @@ def claim_K():
     if response.status_code == 200:
         DATA_K['game_state']['last_claim'] = response_data.get('last_claim')
         DATA_K['game_state']['balance'] = response_data.get('hot_in_storage')
-        print(f"Claim Success.Current Balance of K is {int(PAYLOAD['game_state']['balance']) / 1000000}")
+        print(f"Claim Success.Current Balance of K is {int(DATA_K['game_state']['balance']) / 1000000}")
         time.sleep(7200)
     else:
         print(response_data['detail'])
@@ -61,7 +61,7 @@ def claim_M():
     if response.status_code == 200:
         DATA_M['game_state']['last_claim'] = response_data.get('last_claim')
         DATA_M['game_state']['balance'] = response_data.get('hot_in_storage')
-        print(f"Claim Success.Current Balance of M is {int(PAYLOAD['game_state']['balance']) / 1000000}")
+        print(f"Claim Success.Current Balance of M is {int(DATA_M['game_state']['balance']) / 1000000}")
         time.sleep(21600)
     else:
         print(response_data['detail'])
