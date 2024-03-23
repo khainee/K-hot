@@ -35,7 +35,8 @@ def make_post_request():
         response_data = response.json()
         PAYLOAD['game_state']['last_claim'] = response_data.get('last_claim', PAYLOAD['game_state']['last_claim'])
         PAYLOAD['game_state']['balance'] = response_data.get('hot_in_storage', PAYLOAD['game_state']['balance'])
-        print(f"Claim Success. Current Balance is {int(PAYLOAD['game_state']['balance']) / 1000000}")
+        balance = int(requests.post(url= API_URL + '/status', headers=headers, json=PAYLOAD).json()['hot_in_storage']) 
+        print(f"Claim Success. Current Balance is {balance}")
     else:
         print(f"Trying again.{response.text}")
         make_post_request()
