@@ -33,6 +33,7 @@ def make_post_request():
     response = requests.post(API_URL, headers=headers, json=PAYLOAD)
     if response.status_code == 200:
         response_data = response.json()
+        print(response_data)
         PAYLOAD['game_state']['last_claim'] = response_data.get('last_claim', PAYLOAD['game_state']['last_claim'])
         PAYLOAD['game_state']['balance'] = response_data.get('hot_in_storage', PAYLOAD['game_state']['balance'])
         balance = int(requests.post(url= API_URL + '/status', headers=headers, json=PAYLOAD).json()['hot_in_storage']) 
