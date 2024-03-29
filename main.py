@@ -20,10 +20,10 @@ PAYLOAD = {
         "inviter": "khainezay_1.tg",
         "village": "111646.village.hot.tg",
         "last_claim": 1710992560608961300,
-        "firespace": 1,
+        "firespace": 2,
         "boost": 11,
         "storage": 20,
-        "balance": 51180
+        "balance": 551180
     }
 }
 
