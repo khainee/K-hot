@@ -19,11 +19,11 @@ PAYLOAD = {
         "refferals": 0,
         "inviter": "khainezay_1.tg",
         "village": "111646.village.hot.tg",
-        "last_claim": 1710992560608961300,
+        "last_claim": 1713561964600336000,
         "firespace": 2,
         "boost": 11,
-        "storage": 20,
-        "balance": 551180
+        "storage": 21,
+        "balance": 1122884
     }
 }
 
